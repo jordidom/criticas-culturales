@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Críticas Culturales</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/contacto.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Críticas Culturales</a>
+            <nav class="hidden md:flex space-x-6 ml-auto">
+                <a href="index.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition">Inicio</a>
+                <a href="sobre-mi.html" class="text-gray-700 hover:text-primary transition">Sobre Mí</a>
+                <a href="peticiones.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition">Peticiones</a>
+                <a href="contacto.html" class="text-primary font-medium transition">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button
+                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-primary transition md:hidden"
+                    id="mobile-menu-button">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white absolute w-full shadow-md" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition py-2">Inicio</a>
+                <a href="sobre-mi.html" class="text-gray-700 hover:text-primary transition py-2">Sobre Mí</a>
+                <a href="peticiones.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition py-2">Peticiones</a>
+                <a href="contacto.html" class="text-primary font-medium transition py-2">Contacto</a>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="flex items-center mb-8">
+            <a href="index.html"
+                data-readdy="true" class="flex items-center text-primary hover:underline mr-4">
+                <i class="ri-arrow-left-line mr-1"></i>
+                Volver al blog
+            </a>
+            <nav class="flex text-sm">
+                <a href="index.html"
+                    data-readdy="true" class="text-gray-500 hover:text-primary">Inicio</a>
+                <span class="mx-2 text-gray-400">/</span>
+                <span class="text-gray-700">Contacto</span>
+            </nav>
+        </div>
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Contacto</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">¿Tienes alguna sugerencia, consulta o simplemente
+                    quieres compartir tu opinión? Me encantaría saber de ti. Utiliza cualquiera de los siguientes medios
+                    para ponerte en contacto conmigo.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Contact Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-md p-8 contact-form-container">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Envíame un mensaje</h2>
+                        <form id="contact-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nombre <span
+                                            class="text-red-500">*</span></label>
+                                    <input type="text" id="name" name="name" required
+                                        class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                        placeholder="Tu nombre">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Correo
+                                        electrónico <span class="text-red-500">*</span></label>
+                                    <input type="email" id="email" name="email" required
+                                        class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                        placeholder="tu.email@ejemplo.com">
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Asunto <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="subject" name="subject" required
+                                    class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                    placeholder="Asunto de tu mensaje">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mensaje <span
+                                        class="text-red-500">*</span></label>
+                                <textarea id="message" name="message" rows="6" required
+                                    class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                    placeholder="Escribe tu mensaje aquí..."></textarea>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <label class="flex items-center cursor-pointer">
+                                    <div class="relative">
+                                        <input type="checkbox" id="privacy" name="privacy" class="sr-only">
+                                        <div class="w-5 h-5 bg-white border border-gray-300 rounded"></div>
+                                        <div
+                                            class="absolute inset-0 hidden bg-primary rounded flex items-center justify-center">
+                                            <i class="ri-check-line text-white text-xs"></i>
+                                        </div>
+                                    </div>
+                                    <span class="ml-2 text-sm text-gray-700">Acepto la política de privacidad y el
+                                        tratamiento de mis datos</span>
+                                </label>
+                            </div>
+                            <button type="submit"
+                                class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Enviar
+                                mensaje</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Contact Information -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-8 h-full">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Información de contacto</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Correo electrónico</h3>
+                                <a href="mailto:contacto@criticasculturales.com"
+                                    class="text-primary hover:underline flex items-center">
+                                    <div
+                                        class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                                        <i class="ri-mail-line"></i>
+                                    </div>
+                                    <span>contacto@criticasculturales.com</span>
+                                </a>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Teléfono</h3>
+                                <a href="tel:+34612345678" class="text-gray-700 hover:text-primary flex items-center">
+                                    <div
+                                        class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                                        <i class="ri-phone-line"></i>
+                                    </div>
+                                    <span>+34 612 345 678</span>
+                                </a>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-2">Horario de respuesta</h3>
+                                <p class="text-gray-700 flex items-center">
+                                <div
+                                    class="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100 text-primary mr-3">
+                                    <i class="ri-time-line"></i>
+                                </div>
+                                <span>Lunes a viernes: 9:00 - 18:00</span>
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Redes sociales</h3>
+                                <div class="flex space-x-3">
+                                    <a href="#"
+                                        class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                                        <i class="ri-twitter-x-line"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                                        <i class="ri-instagram-line"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                                        <i class="ri-facebook-line"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                                        <i class="ri-youtube-line"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Preguntas frecuentes</h2>
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Cómo puedo sugerir un libro, película o
+                            serie para reseñar?</h3>
+                        <p class="text-gray-700">Puedes utilizar el formulario de contacto indicando en el asunto
+                            "Sugerencia para reseña" y detallando tu propuesta. También puedes visitar la sección
+                            "Peticiones" donde encontrarás un formulario específico para este fin.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Cuánto tiempo tardas en responder a los
+                            mensajes?</h3>
+                        <p class="text-gray-700">Intento responder a todos los mensajes en un plazo máximo de 48 horas
+                            laborables. En periodos de alta actividad, este tiempo puede extenderse ligeramente, pero
+                            siempre recibirás una respuesta.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Puedo colaborar con el blog o escribir una
+                            reseña invitada?</h3>
+                        <p class="text-gray-700">¡Por supuesto! Me encanta recibir colaboraciones. Envíame un mensaje
+                            detallando tu propuesta y tu experiencia. Valoro especialmente las perspectivas únicas y las
+                            voces auténticas.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Aceptas libros, películas o series para
+                            reseñar de forma promocional?</h3>
+                        <p class="text-gray-700">Sí, estoy abierto a recibir material para reseñar. Sin embargo, es
+                            importante destacar que todas mis reseñas son honestas y reflejan mi opinión personal,
+                            independientemente de cómo haya accedido al contenido.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-50 pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Críticas Culturales</h3>
+                    <p class="text-gray-600 text-sm">Un espacio personal donde comparto mis impresiones sobre libros,
+                        películas y series que han marcado mi experiencia cultural.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Categorías</h3>
+                    <ul class="space-y-2">
+                        <li><a href="libros.html" class="text-gray-600 hover:text-primary text-sm">Libros</a></li>
+                        <li><a href="peliculas.html" class="text-gray-600 hover:text-primary text-sm">Películas</a></li>
+                        <li><a href="series.html" class="text-gray-600 hover:text-primary text-sm">Series</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary text-sm">Sobre Mí</a></li>
+                        <li><a href="#" class="text-primary font-medium text-sm">Contacto</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary text-sm">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Sígueme</h3>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-facebook-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-6 text-center">
+                <p class="text-gray-500 text-sm">© 2025 Críticas Culturales. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/contacto.js"></script>
+</body>
+</html>

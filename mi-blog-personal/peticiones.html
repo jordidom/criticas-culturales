@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peticiones - Críticas Culturales</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/peticiones.css" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Críticas Culturales</a>
+            <nav class="hidden md:flex space-x-6 ml-auto">
+                <a href="index.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition">Inicio</a>
+                <a href="sobre-mi.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition">Sobre Mí</a>
+                <a href="peticiones.html" class="text-primary font-medium transition">Peticiones</a>
+                <a href="contacto.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button
+                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-primary transition md:hidden"
+                    id="mobile-menu-button">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white absolute w-full shadow-md" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition py-2">Inicio</a>
+                <a href="sobre-mi.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition py-2">Sobre Mí</a>
+                <a href="peticiones.html" class="text-primary font-medium transition py-2">Peticiones</a>
+                <a href="contacto.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition py-2">Contacto</a>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="flex items-center mb-8">
+            <a href="index.html"
+                data-readdy="true" class="flex items-center text-primary hover:underline mr-4">
+                <i class="ri-arrow-left-line mr-1"></i>
+                Volver al blog
+            </a>
+            <nav class="flex text-sm">
+                <a href="index.html"
+                    data-readdy="true" class="text-gray-500 hover:text-primary">Inicio</a>
+                <span class="mx-2 text-gray-400">/</span>
+                <span class="text-gray-700">Peticiones</span>
+            </nav>
+        </div>
+        <section class="mb-16">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-800 mb-4">Peticiones de Reseñas</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">¿Hay algún libro, película o serie que te gustaría
+                    que analizara? Envía tu petición y podría convertirse en mi próxima reseña. Las peticiones más
+                    votadas tendrán prioridad.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Petition Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Enviar nueva petición</h2>
+                        <form id="petition-form">
+                            <div class="mb-6">
+                                <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Título de la
+                                    obra <span class="text-red-500">*</span></label>
+                                <input type="text" id="title" name="title" required
+                                    class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                    placeholder="Ej. Cien años de soledad">
+                            </div>
+                            <div class="mb-6">
+                                <label for="content-type" class="block text-sm font-medium text-gray-700 mb-2">Tipo de
+                                    contenido <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <select id="content-type" name="content-type" required
+                                        class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none custom-select pr-8">
+                                        <option value="" disabled selected>Selecciona una opción</option>
+                                        <option value="libro">Libro</option>
+                                        <option value="pelicula">Película</option>
+                                        <option value="serie">Serie</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label for="justification" class="block text-sm font-medium text-gray-700 mb-2">¿Por qué
+                                    debería reseñarla? <span class="text-red-500">*</span></label>
+                                <textarea id="justification" name="justification" rows="5" required
+                                    class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                    placeholder="Explica brevemente por qué crees que esta obra merece una reseña..."></textarea>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Tu nombre
+                                        <span class="text-red-500">*</span></label>
+                                    <input type="text" id="name" name="name" required
+                                        class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                        placeholder="Tu nombre">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Correo
+                                        electrónico <span class="text-red-500">*</span></label>
+                                    <input type="email" id="email" name="email" required
+                                        class="form-input w-full px-4 py-3 rounded shadow-sm focus:ring-2 focus:ring-primary focus:outline-none text-sm border-none"
+                                        placeholder="tu.email@ejemplo.com">
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-6">
+                                <label class="flex items-center cursor-pointer">
+                                    <div class="relative">
+                                        <input type="checkbox" id="notifications" name="notifications" class="sr-only">
+                                        <div class="w-5 h-5 bg-white border border-gray-300 rounded"></div>
+                                        <div
+                                            class="absolute inset-0 hidden bg-primary rounded flex items-center justify-center">
+                                            <i class="ri-check-line text-white text-xs"></i>
+                                        </div>
+                                    </div>
+                                    <span class="ml-2 text-sm text-gray-700">Quiero recibir notificaciones sobre el
+                                        estado de mi petición</span>
+                                </label>
+                            </div>
+                            <button type="submit"
+                                class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap">Enviar
+                                petición</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Petition Status and Popular Requests -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Estado de peticiones</h2>
+                        <div class="flex justify-between mb-6">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-primary">24</div>
+                                <div class="text-sm text-gray-600">Pendientes</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-yellow-500">8</div>
+                                <div class="text-sm text-gray-600">En revisión</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-green-500">42</div>
+                                <div class="text-sm text-gray-600">Completadas</div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-sm text-gray-600">Tiempo medio de respuesta: <span class="font-semibold">7
+                                    días</span></p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <h2 class="text-xl font-bold text-gray-800 mb-6">Próximas reseñas programadas</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="ri-calendar-line text-primary text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-semibold text-gray-800">15 Abril</h3>
+                                        <span
+                                            class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Serie</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">True Detective: Night Country</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="ri-calendar-line text-primary text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-semibold text-gray-800">18 Abril</h3>
+                                        <span
+                                            class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Libro</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">El Ministerio del Futuro</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="ri-calendar-line text-primary text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-semibold text-gray-800">22 Abril</h3>
+                                        <span
+                                            class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">Película</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Civil War</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="ri-calendar-line text-primary text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-semibold text-gray-800">25 Abril</h3>
+                                        <span
+                                            class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Serie</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Fallout</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="https://readdy.ai/home/b97e36b3-5de3-43e0-920d-c09dfdc8fc60/c9547c44-5988-4bac-b829-c83f61a155af"
+                                data-readdy="true" class="text-primary hover:underline text-sm font-medium">Ver
+                                calendario completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Recent Completed Requests -->
+        <section class="mb-16">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800">Reseñas recientes de peticiones</h2>
+                <a href="#" class="text-primary hover:underline text-sm font-medium">Ver todas</a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden petition-card">
+                    <img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20the%20book%20cover%20for%20El%20Problema%20de%20los%20Tres%20Cuerpos%20by%20Liu%20Cixin%2C%20showing%20a%20minimalist%20sci-fi%20design%20with%20cosmic%20elements%20and%20mathematical%20symbols%2C%20high%20quality%20book%20cover%20with%20clean%20typography&width=600&height=300&seq=1&orientation=landscape"
+                        alt="El Problema de los Tres Cuerpos" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-gray-800">El Problema de los Tres Cuerpos</h3>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">Libro</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Una fascinante novela de ciencia ficción que combina
+                            física teórica, historia y filosofía en una narrativa absorbente que desafía nuestra
+                            percepción del universo.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Solicitado por: Javier P.</span>
+                            <a href="#" class="text-primary hover:underline text-sm">Leer reseña</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden petition-card">
+                    <img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20the%20TV%20series%20The%20Bear%20poster%2C%20showing%20a%20kitchen%20setting%20with%20chefs%20in%20a%20restaurant%20environment%2C%20high%20quality%20promotional%20image%20with%20warm%20lighting%20and%20restaurant%20atmosphere&width=600&height=300&seq=2&orientation=landscape"
+                        alt="The Bear" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-gray-800">The Bear (Temporada 2)</h3>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded-full">Serie</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Una intensa exploración del mundo culinario que va mucho
+                            más allá de la cocina, abordando temas como el duelo, la familia y la búsqueda de la
+                            excelencia.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Solicitado por: Marta S.</span>
+                            <a href="#" class="text-primary hover:underline text-sm">Leer reseña</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden petition-card">
+                    <img src="https://readdy.ai/api/search-image?query=A%20professional%20photograph%20of%20the%20movie%20poster%20for%20Oppenheimer%20by%20Christopher%20Nolan%2C%20showing%20a%20dramatic%20cinematic%20composition%20with%20dark%20tones%20and%20explosive%20imagery%2C%20high%20quality%20film%20poster%20with%20artistic%20composition&width=600&height=300&seq=3&orientation=landscape"
+                        alt="Oppenheimer" class="w-full h-48 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-semibold text-gray-800">Oppenheimer</h3>
+                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded-full">Película</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4">Un retrato biográfico magistral que explora la compleja
+                            figura del "padre de la bomba atómica" y las implicaciones éticas de los avances
+                            científicos.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Solicitado por: Alberto M.</span>
+                            <a href="#" class="text-primary hover:underline text-sm">Leer reseña</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Preguntas frecuentes sobre peticiones</h2>
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Cómo se seleccionan las peticiones a
+                            reseñar?</h3>
+                        <p class="text-gray-700">Las peticiones se seleccionan principalmente en base a la popularidad
+                            (número de votos) y mi interés personal en la obra. También considero la disponibilidad del
+                            contenido y la diversidad temática para ofrecer variedad en el blog.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Cuánto tiempo tarda en publicarse una
+                            reseña solicitada?</h3>
+                        <p class="text-gray-700">El tiempo varía dependiendo de la longitud de la obra y mi carga de
+                            trabajo actual. Para libros, suele ser de 2-3 semanas; para películas y series cortas, 1-2
+                            semanas. Las series largas pueden llevar más tiempo. Si has activado las notificaciones,
+                            recibirás un email cuando tu petición cambie de estado.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Puedo solicitar cualquier tipo de
+                            contenido cultural?</h3>
+                        <p class="text-gray-700">Me especializo en libros, películas y series, pero ocasionalmente
+                            también reseño videojuegos, cómics y obras de teatro. Si tienes dudas sobre si tu petición
+                            encaja en la temática del blog, no dudes en enviarla y la valoraré.</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">¿Qué ocurre si mi petición no es
+                            seleccionada?</h3>
+                        <p class="text-gray-700">Las peticiones permanecen activas durante 3 meses. Si pasado este
+                            tiempo no han sido seleccionadas, pasan a un archivo pero pueden volver a solicitarse. A
+                            veces, agrupo varias peticiones similares en artículos temáticos, así que tu sugerencia
+                            podría aparecer en un formato diferente al esperado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-50 pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Críticas Culturales</h3>
+                    <p class="text-gray-600 text-sm">Un espacio personal donde comparto mis impresiones sobre libros,
+                        películas y series que han marcado mi experiencia cultural.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Categorías</h3>
+                    <ul class="space-y-2">
+                        <li><a href="libros.html" class="text-gray-600 hover:text-primary text-sm">Libros</a></li>
+                        <li><a href="peliculas.html" class="text-gray-600 hover:text-primary text-sm">Películas</a></li>
+                        <li><a href="series.html" class="text-gray-600 hover:text-primary text-sm">Series</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://readdy.ai/home/b97e36b3-5de3-43e0-920d-c09dfdc8fc60/fe578e94-441b-489c-a581-93da9199a462"
+                                data-readdy="true" class="text-gray-600 hover:text-primary text-sm">Sobre Mí</a></li>
+                        <li><a href="https://readdy.ai/home/b97e36b3-5de3-43e0-920d-c09dfdc8fc60/725b5bac-4d5a-4e21-a34f-99cfa57f97e1"
+                                data-readdy="true" class="text-gray-600 hover:text-primary text-sm">Contacto</a></li>
+                        <li><a href="#" class="text-primary font-medium text-sm">Peticiones</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary text-sm">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Sígueme</h3>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-facebook-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-youtube-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-6 text-center">
+                <p class="text-gray-500 text-sm">© 2025 Críticas Culturales. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/peticiones.js"></script>
+</body>
+</html>
