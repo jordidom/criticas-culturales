@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Reseñas Literarias</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/libros.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-['Pacifico'] text-primary">Críticas Culturales</a>
+            <nav class="hidden md:flex space-x-6 ml-auto">
+                <a href="index.html" class="text-gray-700 hover:text-primary transition">Inicio</a>
+                <a href="sobre-mi.html" class="text-gray-700 hover:text-primary transition">Sobre Mí</a>
+                <a href="peticiones.html" class="text-gray-700 hover:text-primary transition">Peticiones</a>
+                <a href="contacto.html"
+                    data-readdy="true" class="text-gray-700 hover:text-primary transition">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button
+                    class="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-primary transition md:hidden"
+                    id="mobile-menu-button">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white absolute w-full shadow-md" id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-700 hover:text-primary transition py-2">Inicio</a>
+                <a href="sobre-mi.html" class="text-gray-700 hover:text-primary transition py-2">Sobre Mí</a>
+                <a href="peticiones.html" class="text-gray-700 hover:text-primary transition py-2">Peticiones</a>
+                <a href="contacto.html" class="text-gray-700 hover:text-primary transition py-2">Contacto</a>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Header -->
+        <div class="mb-8 text-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Biblioteca de Reseñas</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Explora mi colección personal de libros reseñados. Utiliza los
+                filtros para encontrar tu próxima lectura basada en géneros, calificaciones y más.</p>
+        </div>
+        <!-- Search and Filters -->
+        <div class="mb-8 bg-gray-50 rounded-lg p-6 shadow-sm">
+            <div class="flex flex-col md:flex-row gap-4 mb-4">
+                <div class="flex-1 relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="ri-search-line text-gray-400"></i>
+                    </div>
+                    <input type="search" id="searchInput"
+                        class="w-full pl-10 pr-3 py-2 border border-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                        placeholder="Buscar por título o autor...">
+                </div>
+                <button id="filterToggle"
+                    class="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded !rounded-button hover:bg-gray-50 whitespace-nowrap">
+                    <i class="ri-filter-3-line"></i>
+                    <span>Filtros</span>
+                </button>
+                <button id="resetFilters"
+                    class="flex items-center justify-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded !rounded-button hover:bg-gray-50 whitespace-nowrap">
+                    <i class="ri-refresh-line"></i>
+                    <span>Restablecer</span>
+                </button>
+            </div>
+            <!-- Advanced Filters -->
+            <div id="advancedFilters" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                    <!-- Género -->
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Género</label>
+                        <div class="relative">
+                            <select id="genreFilter"
+                                class="w-full appearance-none bg-white border border-gray-200 rounded py-2 px-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                <option value="">Todos los géneros</option>
+                                <option value="realismo-magico">Realismo Mágico</option>
+                                <option value="novela-gotica">Novela Gótica</option>
+                                <option value="literatura-experimental">Literatura Experimental</option>
+                                <option value="novela-historica">Novela Histórica</option>
+                                <option value="fantasia-juvenil">Fantasía Juvenil</option>
+                                <option value="thriller-psicologico">Thriller Psicológico</option>
+                                <option value="literatura-contemporanea">Literatura Contemporánea</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Año de publicación -->
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Año de publicación</label>
+                        <div class="flex gap-2">
+                            <div class="relative flex-1">
+                                <input type="number" id="yearFrom"
+                                    class="w-full border border-gray-200 rounded py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                    placeholder="Desde">
+                            </div>
+                            <div class="relative flex-1">
+                                <input type="number" id="yearTo"
+                                    class="w-full border border-gray-200 rounded py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                    placeholder="Hasta">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Calificación -->
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Calificación mínima</label>
+                        <div class="relative">
+                            <select id="ratingFilter"
+                                class="w-full appearance-none bg-white border border-gray-200 rounded py-2 px-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                <option value="">Cualquier calificación</option>
+                                <option value="5">5 estrellas</option>
+                                <option value="4">4+ estrellas</option>
+                                <option value="3">3+ estrellas</option>
+                                <option value="2">2+ estrellas</option>
+                                <option value="1">1+ estrellas</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Autor -->
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Autor</label>
+                        <div class="relative">
+                            <select id="authorFilter"
+                                class="w-full appearance-none bg-white border border-gray-200 rounded py-2 px-3 pr-8 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                                <option value="">Todos los autores</option>
+                                <option value="gabriel-garcia-marquez">Gabriel García Márquez</option>
+                                <option value="carlos-ruiz-zafon">Carlos Ruiz Zafón</option>
+                                <option value="julio-cortazar">Julio Cortázar</option>
+                                <option value="isabel-allende">Isabel Allende</option>
+                                <option value="fernando-aramburu">Fernando Aramburu</option>
+                                <option value="laura-gallego">Laura Gallego</option>
+                                <option value="torcuato-luca-de-tena">Torcuato Luca de Tena</option>
+                                <option value="mario-vargas-llosa">Mario Vargas Llosa</option>
+                                <option value="javier-marias">Javier Marías</option>
+                                <option value="julia-navarro">Julia Navarro</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                <i class="ri-arrow-down-s-line text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Opciones adicionales -->
+                <div class="mt-4 flex flex-wrap gap-4">
+                    <label class="custom-checkbox flex items-center gap-2">
+                        <input type="checkbox" id="favoritesOnly">
+                        <span class="checkmark"></span>
+                        <span class="ml-2">Solo favoritos</span>
+                    </label>
+                    <label class="custom-checkbox flex items-center gap-2">
+                        <input type="checkbox" id="recentOnly">
+                        <span class="checkmark"></span>
+                        <span class="ml-2">Reseñas recientes</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- Books Grid -->
+        <div id="booksGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Book 1 -->
+            <div
+                class="book-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300">
+                <a href="/resena/cien-anos-de-soledad" class="block">
+                    <div class="relative pb-[140%]">
+                        <img src="https://readdy.ai/api/search-image?query=book%20cover%20design%20for%20Cien%20a%C3%B1os%20de%20soledad%20by%20Gabriel%20Garc%C3%ADa%20M%C3%A1rquez%2C%20classic%20literature%2C%20minimalist%20design%2C%20soft%20colors%2C%20elegant%20typography%2C%20high%20quality%20book%20cover&width=500&height=700&seq=1&orientation=portrait"
+                            alt="Cien años de soledad" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h3 class="font-playfair text-lg font-semibold mb-1">Cien años de soledad
+                                </h3>
+                                <p class="text-sm">Gabriel García Márquez</p>
+                            </div>
+                            <button
+                                class="favorite-btn w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors">
+                                <i class="ri-heart-line"></i>
+                            </button>
+                        </div>
+                        <div class="star-rating flex mb-3">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-2 px-4 rounded !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="ri-book-open-line"></i>
+                            Ver reseña
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <!-- Book 2 -->
+            <div
+                class="book-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300">
+                <a href="/resena/la-sombra-del-viento" class="block">
+                    <div class="relative pb-[140%]">
+                        <img src="https://readdy.ai/api/search-image?query=book%20cover%20design%20for%20La%20sombra%20del%20viento%20by%20Carlos%20Ruiz%20Zaf%C3%B3n%2C%20mystery%20novel%2C%20gothic%20atmosphere%2C%20dark%20tones%20with%20subtle%20red%20accents%2C%20vintage%20style%2C%20high%20quality%20book%20cover&width=500&height=700&seq=2&orientation=portrait"
+                            alt="La sombra del viento" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-lg font-semibold mb-1">La sombra del viento</h3>
+                        <p class="text-sm mb-2">Carlos Ruiz Zafón</p>
+                        <div class="star-rating flex mb-3">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line empty"></i>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-2 px-4 rounded !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="ri-book-open-line"></i>
+                            Ver reseña
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <!-- Book 3 -->
+            <div
+                class="book-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300">
+                <a href="/resena/la-sombra-del-viento" class="block">
+                    <div class="relative pb-[140%]">
+                        <img src="https://readdy.ai/api/search-image?query=book%20cover%20design%20for%20La%20sombra%20del%20viento%20by%20Carlos%20Ruiz%20Zaf%C3%B3n%2C%20mystery%20novel%2C%20gothic%20atmosphere%2C%20dark%20tones%20with%20subtle%20red%20accents%2C%20vintage%20style%2C%20high%20quality%20book%20cover&width=500&height=700&seq=2&orientation=portrait"
+                            alt="La sombra del viento" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-lg font-semibold mb-1">La sombra del viento</h3>
+                        <p class="text-sm mb-2">Carlos Ruiz Zafón</p>
+                        <div class="star-rating flex mb-3">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line empty"></i>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-2 px-4 rounded !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="ri-book-open-line"></i>
+                            Ver reseña
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <!-- Book 4 -->
+            <div
+                class="book-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300">
+                <a href="/resena/la-sombra-del-viento" class="block">
+                    <div class="relative pb-[140%]">
+                        <img src="https://readdy.ai/api/search-image?query=book%20cover%20design%20for%20La%20sombra%20del%20viento%20by%20Carlos%20Ruiz%20Zaf%C3%B3n%2C%20mystery%20novel%2C%20gothic%20atmosphere%2C%20dark%20tones%20with%20subtle%20red%20accents%2C%20vintage%20style%2C%20high%20quality%20book%20cover&width=500&height=700&seq=2&orientation=portrait"
+                            alt="La sombra del viento" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-lg font-semibold mb-1">La sombra del viento</h3>
+                        <p class="text-sm mb-2">Carlos Ruiz Zafón</p>
+                        <div class="star-rating flex mb-3">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line empty"></i>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-2 px-4 rounded !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="ri-book-open-line"></i>
+                            Ver reseña
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <!-- Book 5 -->
+            <div
+                class="book-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300" data-new="true">
+                <a href="/resena/la-sombra-del-viento" class="block">
+                    <div class="relative pb-[140%]">
+                        <img src="https://readdy.ai/api/search-image?query=book%20cover%20design%20for%20La%20sombra%20del%20viento%20by%20Carlos%20Ruiz%20Zaf%C3%B3n%2C%20mystery%20novel%2C%20gothic%20atmosphere%2C%20dark%20tones%20with%20subtle%20red%20accents%2C%20vintage%20style%2C%20high%20quality%20book%20cover&width=500&height=700&seq=2&orientation=portrait"
+                            alt="La sombra del viento" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-lg font-semibold mb-1">La sombra del viento</h3>
+                        <p class="text-sm mb-2">Carlos Ruiz Zafón</p>
+                        <div class="star-rating flex mb-3">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line empty"></i>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-2 px-4 rounded !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="ri-book-open-line"></i>
+                            Ver reseña
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <!-- Book 6 -->
+            <div
+                class="book-card bg-white rounded-lg overflow-hidden shadow-sm border border-gray-100 transition-all duration-300">
+                <a href="/resena/la-sombra-del-viento" class="block">
+                    <div class="relative pb-[140%]">
+                        <img src="https://readdy.ai/api/search-image?query=book%20cover%20design%20for%20La%20sombra%20del%20viento%20by%20Carlos%20Ruiz%20Zaf%C3%B3n%2C%20mystery%20novel%2C%20gothic%20atmosphere%2C%20dark%20tones%20with%20subtle%20red%20accents%2C%20vintage%20style%2C%20high%20quality%20book%20cover&width=500&height=700&seq=2&orientation=portrait"
+                            alt="La sombra del viento" class="absolute inset-0 w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-playfair text-lg font-semibold mb-1">La sombra del viento</h3>
+                        <p class="text-sm mb-2">Carlos Ruiz Zafón</p>
+                        <div class="star-rating flex mb-3">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line empty"></i>
+                        </div>
+                        <button
+                            class="w-full bg-primary text-white py-2 px-4 rounded !rounded-button hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                            <i class="ri-book-open-line"></i>
+                            Ver reseña
+                        </button>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- Pagination -->
+        <div class="mt-10 flex justify-center">
+            <nav class="inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination" id="pagination">
+                <a href="#"
+                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-200 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                    id="prevPage">
+                    <span class="sr-only">Anterior</span>
+                    <i class="ri-arrow-left-s-line"></i>
+                </a>
+                <div id="pageNumbers" class="inline-flex">
+                    <!-- Page numbers will be dynamically inserted here -->
+                </div>
+                <a href="#"
+                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-200 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+                    id="nextPage">
+                    <span class="sr-only">Siguiente</span>
+                    <i class="ri-arrow-right-s-line"></i>
+                </a>
+            </nav>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-50 pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Críticas Culturales</h3>
+                    <p class="text-gray-600 text-sm">Un espacio personal donde comparto mis impresiones sobre libros,
+                        películas y series que han marcado mi experiencia cultural.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Categorías</h3>
+                    <ul class="space-y-2">
+                        <li><a href="libros.html" class="text-gray-600 hover:text-primary text-sm">Libros</a></li>
+                        <li><a href="peliculas.html" class="text-gray-600 hover:text-primary text-sm">Películas</a></li>
+                        <li><a href="series.html" class="text-gray-600 hover:text-primary text-sm">Series</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Enlaces</h3>
+                    <ul class="space-y-2">
+                        <li><a href="sobre-mi.html" class="text-gray-600 hover:text-primary text-sm">Sobre Mí</a></li>
+                        <li><a href="contacto.html"
+                                data-readdy="true" class="text-gray-600 hover:text-primary text-sm">Contacto</a></li>
+                        <li><a href="politica-de-privacidad.html" class="text-gray-600 hover:text-primary text-sm">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Sígueme</h3>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-600 hover:text-primary transition">
+                            <i class="ri-tiktok-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-6 text-center">
+                <p class="text-gray-500 text-sm">© 2025 Críticas Culturales. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/libros.js"></script>
+</body>
+</html>
